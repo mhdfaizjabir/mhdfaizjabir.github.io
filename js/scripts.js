@@ -4,12 +4,7 @@ document.getElementById('year').textContent = new Date().getFullYear();
 
 // Blog data
 const blogs = [
-  {
-    title: "Mastering the Tools: Essential Languages and Libraries in Data Science",
-    date: "Feb 10, 2024",
-    description: "In our exploration of data science, understanding the tools of the trade is paramount.",
-    link: "blogs/b1.html"
-  },
+  
   {
     title: "Exploring the Boundless: An Introduction to the World of Possibilities in Data Science and Machine Learning",
     date: "Feb 12, 2024",
@@ -29,23 +24,30 @@ const blogs = [
     link: "blogs/b4.html"
   },
   {
+    title: "Essential Data Science Books for Starting Out",
+    date: "Feb 22, 2024",
+    description: "On my journey into the world of data science has been both exhilarating and daunting.",
+    link: "blogs/b7.html"
+  },
+  {
     title: "Exploring Python Libraries for Data Science: A Simple Guide",
     date: "Feb 18, 2024",
     description: "Learn what matters.",
     link: "blogs/b5.html"
   },
   {
+    title: "Mastering the Tools: Essential Languages and Libraries in Data Science",
+    date: "Feb 10, 2024",
+    description: "In our exploration of data science, understanding the tools of the trade is paramount.",
+    link: "blogs/b1.html"
+  },
+  {
     title: "Simple Python Project: HDBMS - Bridging the Gap Between Coding Basics and Real-World Application",
     date: "Feb 20, 2024",
     description: "Hospital Database Management System.",
     link: "blogs/b6.html"
-  },
-  {
-    title: "Essential Data Science Books for Starting Out",
-    date: "Feb 22, 2024",
-    description: "On my journey into the world of data science has been both exhilarating and daunting.",
-    link: "blogs/b7.html"
-  },
+  }
+
 ];
 
 // Insert blogs into the page
