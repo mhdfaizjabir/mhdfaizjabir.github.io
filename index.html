@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Mohammad Faiz Jabir - AI Engineer, Data Scientist, and LLM Developer in Qatar.">
+  <title>Mohammad Faiz Jabir</title>
+  <style>
+    :root {
+      --ink: #121212;
+      --muted: #646464;
+      --soft: #f6f5f2;
+      --line: #e8e4dc;
+      --accent: #1f6f68;
+      --accent-soft: #e8f2ef;
+      --page-bg: #fffdf9;
+      --panel-bg: rgba(255, 255, 255, 0.58);
+      --feature-bg: linear-gradient(180deg, #ffffff 0%, #f8fbfa 100%);
+      --logo-bg: #fff;
+      --avatar-border: #fff;
+      --shadow: rgba(20, 20, 20, 0.13);
+      --blue-link: #3978ff;
+      --pink-link: #e92f8b;
+      --max: 980px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      background: var(--page-bg);
+      color: var(--ink);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.55;
+      letter-spacing: 0;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+      padding: 34px 0 52px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 56px;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .mark {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--ink);
+      font-weight: 650;
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: var(--accent);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .nav a {
+      border-bottom: 1px solid transparent;
+    }
+
+    .nav a:hover,
+    .contact a:hover,
+    .project a:hover {
+      border-bottom-color: currentColor;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      align-items: center;
+      gap: 44px;
+      margin: 10px 0 72px;
+    }
+
+    h1 {
+      max-width: 760px;
+      font-size: clamp(3.1rem, 8vw, 5.9rem);
+      line-height: 0.96;
+      font-weight: 820;
+      letter-spacing: 0;
+      margin-bottom: 16px;
+    }
+
+    .role {
+      max-width: 720px;
+      margin-bottom: 16px;
+      font-size: 1.05rem;
+      font-weight: 720;
+      color: var(--ink);
+    }
+
+    .lead {
+      max-width: 680px;
+      color: var(--muted);
+      font-size: clamp(1rem, 2vw, 1.16rem);
+    }
+
+    .lead strong {
+      font-weight: 650;
+    }
+
+    .avatar-frame {
+      width: 224px;
+      height: 224px;
+      border-radius: 50%;
+      border: 5px solid var(--avatar-border);
+      overflow: hidden;
+      background: var(--soft);
+      box-shadow: 0 12px 34px var(--shadow);
+    }
+
+    .avatar {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 26%;
+      transform: scale(1.1);
+      display: block;
+    }
+
+    .contact {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 12px;
+      margin-top: 24px;
+      color: var(--muted);
+      font-size: 0.84rem;
+      font-weight: 760;
+      text-transform: uppercase;
+    }
+
+    .contact a,
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      min-height: 24px;
+      border-bottom: 1px solid transparent;
+    }
+
+    .contact a {
+      color: var(--blue-link);
+    }
+
+    .contact a:nth-child(2) {
+      color: var(--pink-link);
+    }
+
+    .contact a:nth-child(3) {
+      color: var(--blue-link);
+    }
+
+    .pill {
+      color: var(--muted);
+      text-transform: none;
+      font-weight: 650;
+    }
+
+    section {
+      margin-bottom: 60px;
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: 170px 1fr;
+      gap: 28px;
+      align-items: start;
+      padding-top: 22px;
+      border-top: 1px solid var(--line);
+    }
+
+    h2 {
+      font-size: 0.85rem;
+      color: var(--accent);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .stack {
+      display: grid;
+      gap: 22px;
+    }
+
+    .item,
+    .project {
+      display: grid;
+      gap: 6px;
+    }
+
+    .item.has-logo {
+      grid-template-columns: 92px 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .logo-box {
+      width: 92px;
+      height: 92px;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--logo-bg);
+    }
+
+    .logo-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      padding: 7px;
+    }
+
+    .logo-box.wide img {
+      padding: 5px;
+    }
+
+    .logo-box.dark {
+      background: #9a113c;
+    }
+
+    .logo-box.dark img,
+    .logo-box.tall img {
+      padding: 0;
+    }
+
+    .logo-box.tall img {
+      object-fit: cover;
+    }
+
+    .logo-box.crop img {
+      object-fit: cover;
+      padding: 0;
+    }
+
+    .logo-box.purple {
+      background: #5d2cff;
+    }
+
+    .item-copy {
+      min-width: 0;
+    }
+
+    .row {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    h3 {
+      font-size: 1.1rem;
+      font-weight: 660;
+      letter-spacing: 0;
+    }
+
+    .meta {
+      color: var(--muted);
+      font-size: 0.86rem;
+      white-space: nowrap;
+    }
+
+    p {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .project {
+      min-height: 206px;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel-bg);
+    }
+
+    .project-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .project a {
+      color: var(--accent);
+      font-size: 0.86rem;
+      font-weight: 650;
+      border-bottom: 1px solid transparent;
+      white-space: nowrap;
+    }
+
+    .project.featured {
+      grid-column: 1 / -1;
+      min-height: 0;
+      background: var(--feature-bg);
+    }
+
+    .project.featured p {
+      max-width: 720px;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-top: auto;
+      padding-top: 6px;
+    }
+
+    .tag {
+      color: #43625f;
+      background: var(--accent-soft);
+      border-radius: 999px;
+      padding: 4px 8px;
+      font-size: 0.75rem;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    }
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .skill {
+      padding: 8px 10px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel-bg);
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 760px) {
+      .page {
+        width: min(100% - 28px, var(--max));
+        padding-top: 24px;
+      }
+
+      .topbar {
+        align-items: flex-start;
+        margin-bottom: 42px;
+      }
+
+      .hero {
+        grid-template-columns: 150px 1fr;
+        gap: 22px;
+        margin-bottom: 44px;
+      }
+
+      h1 {
+        font-size: clamp(2.55rem, 11vw, 4.2rem);
+      }
+
+      .avatar-frame {
+        width: 150px;
+        height: 150px;
+      }
+
+      .section-head {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+
+      .project-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .row {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 4px;
+      }
+
+      .meta {
+        white-space: normal;
+      }
+
+      .item.has-logo {
+        grid-template-columns: 64px 1fr;
+        gap: 12px;
+      }
+
+      .logo-box {
+        width: 64px;
+        height: 64px;
+        border-radius: 7px;
+      }
+    }
+
+    @media (max-width: 440px) {
+      .topbar {
+        flex-direction: column;
+        align-items: center;
+        gap: 14px;
+        margin-bottom: 34px;
+      }
+
+      .nav {
+        justify-content: center;
+        gap: 14px;
+      }
+
+      .contact a,
+      .pill {
+        max-width: 100%;
+        overflow-wrap: anywhere;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+        justify-items: center;
+        gap: 20px;
+        text-align: center;
+      }
+
+      .avatar-frame {
+        width: 164px;
+        height: 164px;
+      }
+
+      h1 {
+        max-width: 10ch;
+        font-size: clamp(2.45rem, 12vw, 3.4rem);
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .role {
+        max-width: 24ch;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .lead {
+        max-width: 34ch;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .contact {
+        justify-content: center;
+        gap: 4px 10px;
+        margin-top: 22px;
+      }
+
+      .contact a:not(:last-of-type)::after {
+        content: "|";
+        margin-left: 10px;
+        color: #b8b0a6;
+        font-weight: 500;
+      }
+
+      .project {
+        min-height: 0;
+      }
+
+      .project-top {
+        flex-direction: column;
+        gap: 4px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="topbar" aria-label="Site header">
+      <a class="mark" href="#top" aria-label="Home">
+        <span class="dot" aria-hidden="true"></span>
+      </a>
+      <nav class="nav" aria-label="Main navigation">
+        <a href="#work">Work</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+      </nav>
+    </header>
+
+    <div class="hero" id="top">
+      <div class="avatar-frame">
+        <img class="avatar" src="faiz.jpeg" alt="Mohammad Faiz Jabir">
+      </div>
+      <div>
+        <h1>Mohammad Faiz Jabir</h1>
+        <p class="role">Data Science & AI Graduate | AI/ML Developer</p>
+        <p class="lead">
+          I build applied AI systems that turn messy data, documents, and model outputs into useful products, from clinical decision support and RAG chatbots to forecasting tools and deployed ML APIs.
+        </p>
+        <div class="contact" aria-label="Contact links">
+          <a href="mailto:faizjabir003@gmail.com">Email</a>
+          <a href="https://github.com/mhdfaizjabir" target="_blank" rel="noreferrer">GitHub</a>
+          <a href="https://qa.linkedin.com/in/mohammad-faiz-jabir" target="_blank" rel="noreferrer">LinkedIn</a>
+          <span class="pill">Doha, Qatar</span>
+        </div>
+      </div>
+    </div>
+
+    <section id="work">
+      <div class="section-head">
+        <h2>Experience</h2>
+        <div class="stack">
+          <article class="item has-logo">
+            <div class="logo-box wide">
+              <img src="tcs.jpg" alt="Tata Consultancy Services logo">
+            </div>
+            <div class="item-copy">
+              <div class="row">
+                <h3>AI Intern - Tata Consultancy Services</h3>
+                <span class="meta">Apr 2026 - Present</span>
+              </div>
+              <p>Contributing to internal AI chatbot and knowledge-access workflows, with focus on retrieval quality, requirements understanding, response evaluation, and user-facing AI experience.</p>
+            </div>
+          </article>
+
+          <article class="item has-logo">
+            <div class="logo-box crop">
+              <img src="lusail.jpg" alt="Lusail International Circuit logo">
+            </div>
+            <div class="item-copy">
+              <div class="row">
+                <h3>Marketing and Communication Intern - Lusail International Circuit</h3>
+                <span class="meta">Nov 2025 - Dec 2025</span>
+              </div>
+              <p>Supported event marketing, promotional coordination, audience engagement, and communication activities for motorsport and venue operations.</p>
+            </div>
+          </article>
+
+          <article class="item has-logo">
+            <div class="logo-box crop">
+              <img src="eq.jpg" alt="Experience Qatar logo">
+            </div>
+            <div class="item-copy">
+              <div class="row">
+                <h3>Tech Intern - Experience Tours and Events Services</h3>
+                <span class="meta">Jul 2025 - Aug 2025</span>
+              </div>
+              <p>Analyzed survey data for business insights, improved website SEO, managed 80+ tour listings, and coordinated CRM and IVR integration work.</p>
+            </div>
+          </article>
+
+          <article class="item has-logo">
+            <div class="logo-box tall">
+              <img src="pd.jpg" alt="Pride Deal logo">
+            </div>
+            <div class="item-copy">
+              <div class="row">
+                <h3>Administrative Support Assistant - Pride Deal</h3>
+                <span class="meta">Jun 2024 - Aug 2024</span>
+              </div>
+              <p>Managed invoices, quotations, delivery tracking, reporting, order processing, supplier communication, and spreadsheet-based workflow improvements.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="section-head">
+        <h2>Projects</h2>
+        <div class="project-grid">
+          <article class="project featured">
+            <div class="project-top">
+              <h3>Multi-Agent Sepsis Early Warning System</h3>
+            </div>
+            <p>Private-code healthcare AI capstone for interpretable ICU decision support. The system combines MIMIC-IV structured clinical data and clinical notes, an XGBoost sepsis risk model, SHAP explanations, RAG over patient context, and a multi-agent reasoning layer for evidence-grounded clinical summaries.</p>
+            <p>Built with specialized agents for explanation, recommendation support, orchestration, and safety validation. Guardrails block prescriptive or overconfident wording, check grounding and structure, retry unsafe outputs, and add a decision-support disclaimer before display.</p>
+            <div class="tags">
+              <span class="tag">XGBoost</span>
+              <span class="tag">SHAP</span>
+              <span class="tag">MIMIC-IV</span>
+              <span class="tag">LangGraph</span>
+              <span class="tag">RAG</span>
+              <span class="tag">ChromaDB</span>
+              <span class="tag">Clinical AI</span>
+              <span class="tag">Private code</span>
+            </div>
+          </article>
+
+          <article class="project">
+            <div class="project-top">
+              <h3>SmartHire AI</h3>
+              <a href="https://github.com/mhdfaizjabir/SMARTHIRE" target="_blank" rel="noreferrer">Repo</a>
+            </div>
+            <p>Local AI recruitment assistant for CV screening, candidate ranking, evidence retrieval, explanations, interview questions, and recruiter Q&A.</p>
+            <div class="tags">
+              <span class="tag">Streamlit</span>
+              <span class="tag">Ollama</span>
+              <span class="tag">TF-IDF</span>
+              <span class="tag">Embeddings</span>
+            </div>
+          </article>
+
+          <article class="project">
+            <div class="project-top">
+              <h3>ArXiv Inbox</h3>
+              <a href="https://github.com/mhdfaizjabir/arxiv-inbox" target="_blank" rel="noreferrer">Repo</a>
+            </div>
+            <p>Local AI research inbox that fetches recent arXiv papers, ranks them with an LLM, generates digests, and stores searchable results with SQLite and Chroma.</p>
+            <div class="tags">
+              <span class="tag">Python</span>
+              <span class="tag">LangGraph</span>
+              <span class="tag">Chroma</span>
+              <span class="tag">SQLite</span>
+            </div>
+          </article>
+
+          <article class="project">
+            <div class="project-top">
+              <h3>HarvestGuard AI</h3>
+              <a href="https://github.com/mhdfaizjabir/harvestguard-ai" target="_blank" rel="noreferrer">Repo</a>
+            </div>
+            <p>Crop-stress and food-security decision support prototype with FastAPI, Next.js, live environmental data, risk scoring, forecasts, and LangGraph orchestration.</p>
+            <div class="tags">
+              <span class="tag">FastAPI</span>
+              <span class="tag">Next.js</span>
+              <span class="tag">LangGraph</span>
+              <span class="tag">OpenAI</span>
+            </div>
+          </article>
+
+          <article class="project">
+            <div class="project-top">
+              <h3>Construction Site Safety AI</h3>
+              <a href="https://github.com/mhdfaizjabir/construction-site-safety-ai" target="_blank" rel="noreferrer">Repo</a>
+            </div>
+            <p>NLP and ML system that predicts construction hazards from work descriptions, retrieves similar past incidents, and recommends safety measures.</p>
+            <div class="tags">
+              <span class="tag">Sentence Transformers</span>
+              <span class="tag">XGBoost</span>
+              <span class="tag">NLP</span>
+            </div>
+          </article>
+
+          <article class="project">
+            <div class="project-top">
+              <h3>Credit Risk Modeling API</h3>
+              <a href="https://github.com/mhdfaizjabir/CreditCardRiskScore" target="_blank" rel="noreferrer">Repo</a>
+            </div>
+            <p>Loan default prediction pipeline with engineered financial features, SMOTE-Tomek balancing, Optuna tuning, and a FastAPI endpoint for real-time risk scoring.</p>
+            <div class="tags">
+              <span class="tag">FastAPI</span>
+              <span class="tag">Optuna</span>
+              <span class="tag">Scikit-learn</span>
+              <span class="tag">AUC 0.98</span>
+            </div>
+          </article>
+
+          <article class="project">
+            <div class="project-top">
+              <h3>Indoor Localization</h3>
+              <a href="https://github.com/mhdfaizjabir/indoor_localization" target="_blank" rel="noreferrer">Repo</a>
+            </div>
+            <p>Wi-Fi fingerprinting project for building, floor, and coordinate prediction using PCA, KNN, decision trees, neural networks, and CNN models.</p>
+            <div class="tags">
+              <span class="tag">PCA</span>
+              <span class="tag">KNN</span>
+              <span class="tag">CNN</span>
+              <span class="tag">99.85%</span>
+            </div>
+          </article>
+
+          <article class="project">
+            <div class="project-top">
+              <h3>GHG Emissions Forecasting</h3>
+              <a href="https://github.com/mhdfaizjabir/ghg-emissions-forecasting" target="_blank" rel="noreferrer">Repo</a>
+            </div>
+            <p>Forecasting project for global greenhouse gas emissions using ARIMA and Random Forest models, with Qatar and the top emitting countries as focus cases.</p>
+            <div class="tags">
+              <span class="tag">ARIMA</span>
+              <span class="tag">Random Forest</span>
+              <span class="tag">Forecasting</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <h2>Education</h2>
+        <div class="stack">
+          <article class="item">
+            <div class="row">
+              <h3>BASc, Data Science and Artificial Intelligence - UDST</h3>
+              <span class="meta">2022 - 2026</span>
+            </div>
+            <p>Focused on machine learning, predictive modeling, data engineering, applied statistics, visualization, and end-to-end AI application development.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <h2>Achievements</h2>
+        <div class="stack">
+          <article class="item has-logo">
+            <div class="logo-box">
+              <img src="udst.webp" alt="University of Doha for Science and Technology logo">
+            </div>
+            <div class="item-copy">
+              <h3>Top 2 - Skills Day Vehicle Telemetry Competition</h3>
+              <p>Placed in the top two by working with vehicle telemetry data, performance signals, and analytical presentation under competition constraints.</p>
+            </div>
+          </article>
+
+          <article class="item has-logo">
+            <div class="logo-box purple">
+              <img src="qic.png" alt="Qatar Insurance Company logo">
+            </div>
+            <div class="item-copy">
+              <h3>Finalist - Qatar Insurance Company AI Hackathon</h3>
+              <p>Led Team ECHO to a Top 5 finish in the Gamification track with QIC LIFE+, an AI-based insurance engagement and fitness challenge concept.</p>
+            </div>
+          </article>
+          <article class="item has-logo">
+            <div class="logo-box wide">
+              <img src="sas.png" alt="SAS logo">
+            </div>
+            <div class="item-copy">
+              <h3>SAS and UDST Forecasting Hackathon</h3>
+              <p>Built a GHG emissions forecasting project with ARIMA and Random Forest models, including feature engineering and trend visualizations.</p>
+            </div>
+          </article>
+          <article class="item has-logo">
+            <div class="logo-box">
+              <img src="npc.jpg" alt="National Planning Council logo">
+            </div>
+            <div class="item-copy">
+              <h3>National Planning Council Datathon</h3>
+              <p>Collaborated on population and education data analysis with policy-oriented insights.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="section-head">
+        <h2>Skills</h2>
+        <div class="skills" aria-label="Technical skills">
+          <span class="skill">Python</span>
+          <span class="skill">SQL</span>
+          <span class="skill">Pandas</span>
+          <span class="skill">NumPy</span>
+          <span class="skill">Scikit-learn</span>
+          <span class="skill">XGBoost</span>
+          <span class="skill">TensorFlow</span>
+          <span class="skill">Keras</span>
+          <span class="skill">CNNs</span>
+          <span class="skill">KNN</span>
+          <span class="skill">Decision Trees</span>
+          <span class="skill">Random Forest</span>
+          <span class="skill">Logistic Regression</span>
+          <span class="skill">ARIMA</span>
+          <span class="skill">Optuna</span>
+          <span class="skill">SMOTE-Tomek</span>
+          <span class="skill">SHAP</span>
+          <span class="skill">PCA</span>
+          <span class="skill">Model Evaluation</span>
+          <span class="skill">RAG</span>
+          <span class="skill">LLMs</span>
+          <span class="skill">LangGraph</span>
+          <span class="skill">LangChain</span>
+          <span class="skill">ChromaDB</span>
+          <span class="skill">Sentence Transformers</span>
+          <span class="skill">Semantic Search</span>
+          <span class="skill">Clinical NLP</span>
+          <span class="skill">Prompt Engineering</span>
+          <span class="skill">Ollama</span>
+          <span class="skill">FastAPI</span>
+          <span class="skill">Streamlit</span>
+          <span class="skill">Next.js</span>
+          <span class="skill">REST APIs</span>
+          <span class="skill">Postman</span>
+          <span class="skill">Apache Spark</span>
+          <span class="skill">PySpark</span>
+          <span class="skill">SQLite</span>
+          <span class="skill">Joblib</span>
+          <span class="skill">Power BI</span>
+          <span class="skill">Qlik View</span>
+          <span class="skill">Seaborn</span>
+          <span class="skill">Matplotlib</span>
+          <span class="skill">BigQuery</span>
+          <span class="skill">Vertex AI</span>
+          <span class="skill">AWS</span>
+          <span class="skill">Git</span>
+          <span class="skill">GitHub</span>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
