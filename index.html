@@ -389,6 +389,47 @@
       font-size: 0.9rem;
     }
 
+    .poster-row {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .poster-fig {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+
+    .poster-fig a {
+      display: block;
+      border-radius: 7px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      background: var(--soft);
+    }
+
+    .poster-fig img {
+      width: 100%;
+      height: 210px;
+      object-fit: cover;
+      object-position: top;
+      display: block;
+      transition: opacity 0.15s;
+    }
+
+    .poster-fig a:hover img {
+      opacity: 0.88;
+    }
+
+    .poster-fig figcaption {
+      font-size: 0.78rem;
+      color: var(--muted);
+      text-align: center;
+      font-weight: 550;
+    }
+
     .avail {
       display: inline-flex;
       align-items: center;
@@ -451,6 +492,14 @@
 
       .project-grid {
         grid-template-columns: 1fr;
+      }
+
+      .poster-row {
+        grid-template-columns: 1fr;
+      }
+
+      .poster-fig img {
+        height: 240px;
       }
 
       .row {
@@ -671,6 +720,20 @@
               <span class="tag">ChromaDB</span>
               <span class="tag">Clinical AI</span>
               <span class="tag">Private code</span>
+            </div>
+            <div class="poster-row">
+              <figure class="poster-fig">
+                <a href="poster.jpg" target="_blank" rel="noreferrer">
+                  <img src="poster.jpg" alt="Capstone project poster — Multi-Agent Sepsis Early Warning System">
+                </a>
+                <figcaption>Capstone Poster</figcaption>
+              </figure>
+              <figure class="poster-fig">
+                <a href="posterr.jpg" target="_blank" rel="noreferrer">
+                  <img src="posterr.jpg" alt="With supervisor Dr. Omer Koksal">
+                </a>
+                <figcaption>With supervisor Dr. Omer Koksal</figcaption>
+              </figure>
             </div>
           </article>
 
