@@ -292,16 +292,22 @@
 
     .logo-pair {
       display: flex;
-      flex-direction: column;
+      flex-direction: row;
       align-items: center;
-      gap: 3px;
-      width: 92px;
+      justify-content: flex-start;
+      gap: 7px;
+      width: auto;
     }
 
     .logo-pair .logo-box {
-      width: 42px;
-      height: 42px;
-      border-radius: 6px;
+      width: 60px;
+      height: 60px;
+      border-radius: 7px;
+      flex: none;
+    }
+
+    .item.has-logo.pair {
+      grid-template-columns: 134px 1fr;
     }
 
     .logo-sep {
@@ -536,10 +542,19 @@
         gap: 12px;
       }
 
+      .item.has-logo.pair {
+        grid-template-columns: 121px 1fr;
+      }
+
       .logo-box {
         width: 64px;
         height: 64px;
         border-radius: 7px;
+      }
+
+      .logo-pair .logo-box {
+        width: 54px;
+        height: 54px;
       }
     }
 
@@ -874,7 +889,7 @@
       <div class="section-head">
         <h2>Achievements</h2>
         <div class="stack">
-          <article class="item has-logo">
+          <article class="item has-logo pair">
             <div class="logo-pair">
               <div class="logo-box">
                 <img src="QSTP.png" alt="Qatar Science & Technology Park logo">
@@ -890,7 +905,7 @@
             </div>
           </article>
 
-          <article class="item has-logo">
+          <article class="item has-logo pair">
             <div class="logo-pair">
               <div class="logo-box dark">
                 <img src="uhub.png" alt="UHub logo">
