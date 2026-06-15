@@ -476,6 +476,23 @@
       object-position: center;
     }
 
+    .poster-row.ach-row {
+      grid-template-columns: repeat(3, 1fr);
+      max-width: 560px;
+      margin-top: 14px;
+    }
+
+    .poster-row.ach-row .poster-fig a {
+      aspect-ratio: 4 / 3;
+    }
+
+    .poster-row.ach-row .poster-fig img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+
 
     .poster-fig a:hover img {
       opacity: 0.88;
@@ -976,6 +993,26 @@
             <div class="item-copy">
               <h3>2nd Place — Build for QSTP Hackathon</h3>
               <p>Led team Echo to 2nd place and a Technical Track win with Post Pulse, an AI-powered marketing workspace unifying content creation, optimization, and campaign management across six social platforms. Selected as one of 10 teams to pitch; built a working prototype and delivered a live pitch in 48 hours.</p>
+              <div class="poster-row ach-row">
+                <figure class="poster-fig">
+                  <a href="presenting.jpeg" target="_blank" rel="noreferrer">
+                    <img src="presenting.jpeg" alt="Mohammad Faiz Jabir pitching Post Pulse on stage">
+                  </a>
+                  <figcaption>Live pitch</figcaption>
+                </figure>
+                <figure class="poster-fig">
+                  <a href="winning.jpeg" target="_blank" rel="noreferrer">
+                    <img src="winning.jpeg" alt="Winner — Build for QSTP Hackathon, Technical Track, Team Echo">
+                  </a>
+                  <figcaption>Technical Track win</figcaption>
+                </figure>
+                <figure class="poster-fig">
+                  <a href="postpulse.jpeg" target="_blank" rel="noreferrer">
+                    <img src="postpulse.jpeg" alt="Post Pulse — AI content optimizer dashboard">
+                  </a>
+                  <figcaption>Post Pulse</figcaption>
+                </figure>
+              </div>
             </div>
           </article>
 
