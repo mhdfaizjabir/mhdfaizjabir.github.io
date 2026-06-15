@@ -345,6 +345,19 @@
       font-size: 0.95rem;
     }
 
+    .item-copy ul.bullets {
+      margin: 8px 0 0;
+      padding-left: 18px;
+      color: var(--muted);
+      font-size: 0.92rem;
+      display: grid;
+      gap: 6px;
+    }
+
+    .item-copy ul.bullets li {
+      line-height: 1.5;
+    }
+
     .project-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -676,7 +689,13 @@
                 <h3>Research and Development Intern - Qatar Computing Research Institute</h3>
                 <span class="meta">May 2026 - Present</span>
               </div>
-              <p>Building an end-to-end job market intelligence pipeline under <a href="https://www.hbku.edu.qa/en/staff/dr-hamdy-mubarak-hussien" target="_blank" rel="noreferrer" style="color:var(--accent);border-bottom:1px solid transparent;" onmouseover="this.style.borderBottomColor='currentColor'" onmouseout="this.style.borderBottomColor='transparent'">Dr. Hamdy Mubarak</a> — covering structured data extraction from Arabic and English job postings, a semi-structured RAG system for querying labor market signals, and an analytics dashboard for insight delivery.</p>
+              <p>Building an end-to-end job market intelligence pipeline under <a href="https://www.hbku.edu.qa/en/staff/dr-hamdy-mubarak-hussien" target="_blank" rel="noreferrer" style="color:var(--accent);border-bottom:1px solid transparent;" onmouseover="this.style.borderBottomColor='currentColor'" onmouseout="this.style.borderBottomColor='transparent'">Dr. Hamdy Mubarak</a> over 25K+ bilingual (EN/AR) Bayt.com job postings across 6 GCC countries.</p>
+              <ul class="bullets">
+                <li>Designed a hybrid RAG pipeline (text-to-SQL analytics + pandas statistics + vector similarity search via Qdrant) enabling accurate counts, salary analytics, and semantic job-market queries.</li>
+                <li>Built an LLM-based query decomposition layer (Fanar/GPT) that classifies questions into structured filters, aggregation intents, and semantic queries, with grounding safeguards against hallucinated companies, salaries, and statistics.</li>
+                <li>Developed a FastAPI backend with SSE-streamed chat and a bilingual Next.js (EN/AR) dashboard surfacing real-time sector, salary, skills, and trend analytics across monthly data snapshots.</li>
+                <li>Optimized the pipeline's LLM call architecture, cutting redundant API calls per query by ~50% by sharing decomposition/SQL results across retrieval and generation.</li>
+              </ul>
             </div>
           </article>
 
@@ -689,7 +708,11 @@
                 <h3>AI Engineer Intern - Tata Consultancy Services</h3>
                 <span class="meta">Apr 2026 - Present</span>
               </div>
-              <p>Building LLM prototypes and internal AI tools — including retrieval-augmented chatbots for enterprise knowledge access, with ownership of retrieval quality, prompt design, response evaluation, and end-user experience.</p>
+              <p>Building LLM prototypes and internal AI tools, with ownership of retrieval quality, prompt design, response evaluation, and end-user experience.</p>
+              <ul class="bullets">
+                <li>Built a full-stack RAG-based HR policy chatbot (React + Python) with semantic search over policy documents and an LLM-as-judge evaluation pipeline for automated accuracy scoring.</li>
+                <li>Extended Proxy-Pointer RAG to handwritten/scanned documents using GPT-4o Vision for OCR and heading detection — converting handwriting into structured markdown with breadcrumb-based hierarchical chunking and two-stage retrieval (semantic search + LLM re-ranking) for source-traceable answers.</li>
+              </ul>
             </div>
           </article>
 
