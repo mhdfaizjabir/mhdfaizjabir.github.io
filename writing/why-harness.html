@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="We rent our models by the token, and the thing we rent is a black box. A harness is how you get reliability anyway.">
+  <title>Why Harness by Mohammad Faiz Jabir</title>
+  <link rel="icon" type="image/png" href="../favicon-32x32.png">
+  <style>
+    :root {
+      --ink: #121212;
+      --muted: #646464;
+      --soft: #f6f5f2;
+      --line: #e8e4dc;
+      --accent: #1f6f68;
+      --accent-soft: #e8f2ef;
+      --page-bg: #fffdf9;
+      --shadow: rgba(20, 20, 20, 0.13);
+      --blue-link: #3978ff;
+      --max: 700px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      background: var(--page-bg);
+      color: var(--ink);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+      padding: 34px 0 90px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 56px;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .nav a {
+      border-bottom: 1px solid transparent;
+    }
+
+    .nav a:hover {
+      border-bottom-color: currentColor;
+    }
+
+    .back {
+      display: inline-block;
+      margin-bottom: 18px;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .back:hover {
+      color: var(--ink);
+    }
+
+    .date {
+      display: block;
+      font-size: 0.78rem;
+      color: var(--accent);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    h1 {
+      font-size: clamp(2.2rem, 6vw, 2.9rem);
+      line-height: 1.05;
+      font-weight: 820;
+      margin-bottom: 34px;
+    }
+
+    .prose {
+      max-width: 66ch;
+    }
+
+    .prose p {
+      margin-bottom: 20px;
+    }
+
+    .prose h2 {
+      font-size: 1.3rem;
+      font-weight: 760;
+      margin: 40px 0 14px;
+    }
+
+    .prose ol {
+      margin: 0 0 20px 1.2em;
+      display: grid;
+      gap: 10px;
+    }
+
+    .prose strong {
+      font-weight: 700;
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="topbar" aria-label="Site header">
+      <nav class="nav" aria-label="Main navigation">
+        <a href="../index.html#work">Work</a>
+        <a href="../index.html#projects">Projects</a>
+        <a href="../index.html#skills">Skills</a>
+        <a href="index.html">Writing</a>
+      </nav>
+    </header>
+
+    <a class="back" href="index.html">&larr; Writing</a>
+    <span class="date">July 2026</span>
+    <h1>Why Harness</h1>
+
+    <div class="prose">
+      <p>We rent everything now. Twenty dollars a month for Claude Pro, twenty more for GPT Pro, fractions of a cent per token for whatever runs in between. What we are actually renting is compute, inference, and a model sitting behind an API we do not control.</p>
+
+      <p>That should bother you more than it usually does. The model is a black box. If a provider swaps it for a cheaper one under the same name, you will not be told. If it gets quietly downgraded during a compute crunch, the name on your plan will not change. There are more variables in that relationship than you can see, let alone control.</p>
+
+      <p>So the real question is: how do you build something reliable on top of something you do not control?</p>
+
+      <p>The answer is a harness.</p>
+
+      <h2>What a harness actually is</h2>
+
+      <p>Strip away the AI framing and harness is an old, ordinary word. It is the thing that keeps a climber tethered to the mountain: stable, anchored, built so a slip does not turn into a fall. It is also what you put on a dog before a walk, not because the dog is broken, but because without it, it runs, and you spend the walk chasing it instead of enjoying it.</p>
+
+      <p>Swap climber and dog for agent and the analogy holds exactly. A harness does not make the model smarter. It keeps the model from wandering off, burning your token budget chasing a tangent, or failing quietly in a way you only notice once it is expensive.</p>
+
+      <p>Harness is reliability. It is the guarantee that what you built does what you need it to do, regardless of which model happens to be answering the call underneath it.</p>
+
+      <h2>Two kinds of harness</h2>
+
+      <p>People conflate these, but they solve different problems.</p>
+
+      <p><strong>ML has the eval harness.</strong> It answers one question: is this model good? Benchmarks, holdout sets, scoring rubrics. An offline exercise that judges the model itself before anything ships.</p>
+
+      <p><strong>AI engineering has the agent harness.</strong> It answers a harder question: does this system behave, in production, with real users, right now, no matter which model is plugged in underneath? That is a live, ongoing concern, not a one time score.</p>
+
+      <p>This post is about the second kind.</p>
+
+      <h2>What an agent harness actually holds</h2>
+
+      <p>Pull apart almost any agent and the same moving parts show up, every time.</p>
+
+      <ol>
+        <li><strong>Tool registry.</strong> What the agent is allowed to call, and how each tool is described to the model.</li>
+        <li><strong>Model.</strong> The rented, swappable part. The one piece you never fully control.</li>
+        <li><strong>Context management.</strong> What the model actually sees at each step, and what gets dropped so it does not drown.</li>
+        <li><strong>Guardrails.</strong> The limits that stop a bad decision from becoming a bad outcome.</li>
+        <li><strong>Agent loop.</strong> The plan, act, observe cycle that turns one model call into a working process.</li>
+        <li><strong>Verify.</strong> The check that confirms the output is actually correct, not just fluent.</li>
+      </ol>
+
+      <p>Everything else, the frameworks, the prompts, the retry logic, is detail sitting on top of those six. Get them right and it barely matters which model you are renting this month. Get them wrong, and the smartest model in the world will not save you.</p>
+    </div>
+  </main>
+</body>
+</html>
