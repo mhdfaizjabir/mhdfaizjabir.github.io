@@ -727,12 +727,13 @@
                 <h3>Research and Development Intern - Qatar Computing Research Institute</h3>
                 <span class="meta">May 2026 - Present</span>
               </div>
-              <p>Building an end-to-end job market intelligence pipeline under <a href="https://www.hbku.edu.qa/en/staff/dr-hamdy-mubarak-hussien" target="_blank" rel="noreferrer" style="color:var(--accent);border-bottom:1px solid transparent;" onmouseover="this.style.borderBottomColor='currentColor'" onmouseout="this.style.borderBottomColor='transparent'">Dr. Hamdy Mubarak</a> over 25K+ bilingual (EN/AR) Bayt.com job postings across 6 GCC countries.</p>
+              <p>Building an end-to-end job market intelligence platform under <a href="https://www.hbku.edu.qa/en/staff/dr-hamdy-mubarak-hussien" target="_blank" rel="noreferrer" style="color:var(--accent);border-bottom:1px solid transparent;" onmouseover="this.style.borderBottomColor='currentColor'" onmouseout="this.style.borderBottomColor='transparent'">Dr. Hamdy Mubarak</a>, processing 30K+ bilingual (EN/AR) job postings from Bayt.com and LinkedIn across Qatar, UAE, and Saudi Arabia.</p>
               <ul class="bullets">
-                <li>Designed a hybrid RAG pipeline (text-to-SQL analytics + pandas statistics + vector similarity search via Qdrant) enabling accurate counts, salary analytics, and semantic job-market queries.</li>
-                <li>Built an LLM-based query decomposition layer (Fanar/GPT) that classifies questions into structured filters, aggregation intents, and semantic queries, with grounding safeguards against hallucinated companies, salaries, and statistics.</li>
-                <li>Developed a FastAPI backend with SSE-streamed chat and a bilingual Next.js (EN/AR) dashboard surfacing real-time sector, salary, skills, and trend analytics across monthly data snapshots.</li>
-                <li>Optimized the pipeline's LLM call architecture, cutting redundant API calls per query by ~50% by sharing decomposition/SQL results across retrieval and generation.</li>
+                <li>Designed a hybrid RAG pipeline (text-to-SQL analytics, pandas statistics, vector search via Qdrant, and BM25 keyword search fused via Reciprocal Rank Fusion with cross-encoder reranking) for accurate counts, salary analytics, and semantic job-market queries.</li>
+                <li>Built an LLM-based query decomposition layer (Fanar/GPT) that classifies questions into structured filters, aggregation intents, and semantic queries, with grounding safeguards against hallucinated companies and statistics.</li>
+                <li>Architected a generic filter-registry system so new dashboard filters propagate automatically through SQL, pandas, and vector layers with zero pipeline changes, powering an interactive dashboard where clicking any chart drills into the data and scopes the chatbot to match.</li>
+                <li>Developed a FastAPI backend with SSE-streamed chat and a bilingual Next.js dashboard, cutting redundant LLM API calls per query by ~50% by sharing decomposition and SQL results across retrieval and generation.</li>
+                <li>Built an MCQ evaluation benchmark spanning EN/AR and all three countries, reaching 82.5% overall accuracy (83% EN, 82% AR).</li>
               </ul>
             </div>
           </article>
@@ -744,12 +745,14 @@
             <div class="item-copy">
               <div class="row">
                 <h3>AI Engineer Intern - Tata Consultancy Services</h3>
-                <span class="meta">Apr 2026 - Present</span>
+                <span class="meta">Apr 2026 - Jul 2026</span>
               </div>
-              <p>Building LLM prototypes and internal AI tools, with ownership of retrieval quality, prompt design, response evaluation, and end-user experience.</p>
+              <p>Built LLM prototypes and internal AI tools, with ownership of retrieval quality, prompt design, response evaluation, and end-user experience.</p>
               <ul class="bullets">
-                <li>Built a full-stack RAG-based HR policy chatbot (React + Python) with semantic search over policy documents and an LLM-as-judge evaluation pipeline for automated accuracy scoring.</li>
-                <li>Extended Proxy-Pointer RAG to handwritten/scanned documents using GPT-4o Vision for OCR and heading detection — converting handwriting into structured markdown with breadcrumb-based hierarchical chunking and two-stage retrieval (semantic search + LLM re-ranking) for source-traceable answers.</li>
+                <li><strong>HR Policy Chatbot:</strong> Built a full-stack RAG chatbot (React + Python) with a 3-stage query pipeline, intent classification (policy, chat, or off-topic), multi-turn query rewriting from the last 4 turns of conversation, and retrieval across 9 synthetic policy documents (HR, IT, Security, Expense, Travel, Leave, Remote Work, Offboarding, and Manager Guidelines).</li>
+                <li>Added bilingual (English/Arabic) responses with automatic language detection, LangSmith tracing for latency and cost visibility, and persistent Chroma indexing with a rebuild endpoint. Designed a 10-case LLM-as-judge rubric (faithfulness, relevance, completeness) scored by GPT-4o-mini, reaching 93% average accuracy.</li>
+                <li><strong>Handwritten Hierarchy RAG:</strong> Extended Proxy-Pointer RAG to handwritten and scanned documents with a dual ingestion pipeline: a vision-language model (Llama-4 Scout via Groq) for handwriting OCR with an anti-hallucination fallback, and a LlamaParse layout-extraction path that recovers pixel-exact figure and table crops with bounding-box confidence filtering, auto-captioned for search.</li>
+                <li>Added LLM-based noise filtering to exclude boilerplate sections from the index, section-level retrieval through a parallel section store so answers return the full hierarchical section instead of an isolated chunk, and visual-intent-aware reranking that guarantees diagram and table sections surface when requested.</li>
               </ul>
             </div>
           </article>
