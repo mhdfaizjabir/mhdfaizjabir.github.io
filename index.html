@@ -493,6 +493,20 @@
       object-position: center;
     }
 
+    .poster-row.ach-row.full-row {
+      grid-template-columns: 1fr;
+      max-width: 460px;
+    }
+
+    .poster-row.ach-row.full-row .poster-fig a {
+      aspect-ratio: auto;
+    }
+
+    .poster-row.ach-row.full-row .poster-fig img {
+      height: auto;
+      object-fit: contain;
+    }
+
 
 
     .poster-fig a:hover img {
@@ -1185,7 +1199,7 @@
             <div class="item-copy">
               <h3>Runner-up, UHub × Scale AI Sprint</h3>
               <p>Built Lamaar, an AI-powered smart hiring assistant that streamlines candidate screening, ranking, and shortlisting in a single platform.</p>
-              <div class="poster-row ach-row">
+              <div class="poster-row ach-row full-row">
                 <figure class="poster-fig">
                   <a href="runnerup.jpg" target="_blank" rel="noreferrer">
                     <img src="runnerup.jpg" alt="Team receiving the runner-up award at the UHub Scale AI Sprint and Malomatia Hackathon">
