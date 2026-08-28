@@ -52,7 +52,7 @@
       --shadow: rgba(20, 20, 20, 0.13);
       --blue-link: #3978ff;
       --pink-link: #e92f8b;
-      --max: 1040px;
+      --max: 1120px;
     }
 
     * {
@@ -88,7 +88,7 @@
     .topbar {
       display: flex;
       align-items: center;
-      justify-content: flex-end;
+      justify-content: space-between;
       gap: 18px;
       margin-bottom: 34px;
       font-size: 0.9rem;
@@ -103,6 +103,12 @@
       justify-content: flex-end;
     }
 
+    .brand {
+      color: var(--ink);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+    }
+
     .nav a {
       border-bottom: 1px solid transparent;
     }
@@ -115,18 +121,18 @@
 
     .hero {
       display: grid;
-      grid-template-columns: 170px 1fr;
+      grid-template-columns: 190px 1fr;
       align-items: center;
-      gap: 38px;
-      margin: 0 0 48px;
+      gap: 40px;
+      margin: 6px 0 52px;
     }
 
     h1 {
       max-width: 760px;
-      font-size: clamp(3rem, 6vw, 4.55rem);
-      line-height: 0.96;
+      font-size: clamp(3rem, 6.2vw, 5rem);
+      line-height: 0.94;
       font-weight: 820;
-      letter-spacing: -0.045em;
+      letter-spacing: 0;
       margin-bottom: 16px;
     }
 
@@ -149,8 +155,8 @@
     }
 
     .avatar-frame {
-      width: 164px;
-      height: 164px;
+      width: 184px;
+      height: 184px;
       border-radius: 50%;
       border: 5px solid var(--avatar-border);
       overflow: hidden;
@@ -187,19 +193,19 @@
     }
 
     .contact a {
-      color: var(--accent);
+      color: var(--blue-link);
     }
 
     .contact a:nth-child(2) {
-      color: var(--accent);
+      color: var(--blue-link);
     }
 
     .contact a:nth-child(3) {
-      color: var(--accent);
+      color: var(--pink-link);
     }
 
     .contact a:nth-child(4) {
-      color: var(--accent);
+      color: var(--blue-link);
     }
 
     .pill {
@@ -373,11 +379,11 @@
     }
 
     .project {
-      min-height: 0;
-      padding: 16px 0 8px;
-      border-top: 1px solid var(--line);
-      border-radius: 0;
-      background: transparent;
+      min-height: 188px;
+      padding: 17px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel-bg);
     }
 
     .project-top {
@@ -398,8 +404,7 @@
     .project.featured {
       grid-column: 1 / -1;
       min-height: 0;
-      border-top: 2px solid var(--accent);
-      background: transparent;
+      background: var(--feature-bg);
     }
 
     .project.featured p {
@@ -445,6 +450,30 @@
       margin-bottom: 10px;
     }
 
+    #recognition .stack {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px 28px;
+    }
+
+    #recognition .item.has-logo {
+      grid-template-columns: 64px 1fr;
+      gap: 14px;
+    }
+
+    #recognition .item.has-logo.pair {
+      grid-template-columns: 126px 1fr;
+    }
+
+    #recognition .logo-box,
+    #recognition .logo-pair .logo-box {
+      width: 64px;
+      height: 64px;
+    }
+
+    #recognition .logo-pair {
+      gap: 4px;
+    }
+
     .tags {
       display: flex;
       flex-wrap: wrap;
@@ -455,10 +484,10 @@
 
     .tag {
       color: #43625f;
-      background: transparent;
-      border-radius: 0;
-      padding: 0;
-      font-size: 0.72rem;
+      background: var(--accent-soft);
+      border-radius: 999px;
+      padding: 4px 8px;
+      font-size: 0.75rem;
       font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
     }
 
@@ -624,6 +653,10 @@
         grid-template-columns: 1fr;
       }
 
+      #recognition .stack {
+        grid-template-columns: 1fr;
+      }
+
       .poster-row {
         grid-template-columns: 1fr;
       }
@@ -740,6 +773,7 @@
 <body>
   <main class="page">
     <header class="topbar" aria-label="Site header">
+      <a class="brand" href="#top" aria-label="Back to top">MFJ</a>
       <nav class="nav" aria-label="Main navigation">
         <a href="#work">Work</a>
         <a href="#projects">Projects</a>
@@ -1174,7 +1208,7 @@
             </div>
           </article>
         </div>
-        <button class="project-toggle" type="button" aria-expanded="false">Explore all projects</button>
+        <button class="project-toggle" type="button" aria-expanded="false">View all 18 projects</button>
       </div>
     </section>
 
@@ -1351,7 +1385,7 @@
     projectToggle?.addEventListener('click', () => {
       const expanded = projectGrid.classList.toggle('is-expanded');
       projectToggle.setAttribute('aria-expanded', String(expanded));
-      projectToggle.textContent = expanded ? 'Show selected projects' : 'Explore all projects';
+      projectToggle.textContent = expanded ? 'Show selected projects' : 'View all 18 projects';
     });
 
     document.querySelectorAll('#work .item, #recognition .item').forEach((item) => {
