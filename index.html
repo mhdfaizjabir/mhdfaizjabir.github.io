@@ -52,7 +52,7 @@
       --shadow: rgba(20, 20, 20, 0.13);
       --blue-link: #3978ff;
       --pink-link: #e92f8b;
-      --max: 980px;
+      --max: 1120px;
     }
 
     * {
@@ -82,7 +82,7 @@
     .page {
       width: min(var(--max), calc(100% - 32px));
       margin: 0 auto;
-      padding: 34px 0 52px;
+      padding: 28px 0 44px;
     }
 
     .topbar {
@@ -90,7 +90,7 @@
       align-items: center;
       justify-content: space-between;
       gap: 18px;
-      margin-bottom: 56px;
+      margin-bottom: 34px;
       font-size: 0.9rem;
       color: var(--muted);
     }
@@ -101,6 +101,12 @@
       gap: 18px;
       flex-wrap: wrap;
       justify-content: flex-end;
+    }
+
+    .brand {
+      color: var(--ink);
+      font-weight: 800;
+      letter-spacing: -0.03em;
     }
 
     .nav a {
@@ -115,16 +121,16 @@
 
     .hero {
       display: grid;
-      grid-template-columns: 240px 1fr;
+      grid-template-columns: 190px 1fr;
       align-items: center;
-      gap: 44px;
-      margin: 10px 0 72px;
+      gap: 40px;
+      margin: 6px 0 52px;
     }
 
     h1 {
       max-width: 760px;
-      font-size: clamp(3.1rem, 8vw, 5.9rem);
-      line-height: 0.96;
+      font-size: clamp(3rem, 6.2vw, 5rem);
+      line-height: 0.94;
       font-weight: 820;
       letter-spacing: 0;
       margin-bottom: 16px;
@@ -149,8 +155,8 @@
     }
 
     .avatar-frame {
-      width: 224px;
-      height: 224px;
+      width: 184px;
+      height: 184px;
       border-radius: 50%;
       border: 5px solid var(--avatar-border);
       overflow: hidden;
@@ -171,7 +177,7 @@
       display: flex;
       flex-wrap: wrap;
       gap: 8px 12px;
-      margin-top: 24px;
+      margin-top: 18px;
       color: var(--muted);
       font-size: 0.84rem;
       font-weight: 760;
@@ -209,13 +215,13 @@
     }
 
     section {
-      margin-bottom: 60px;
+      margin-bottom: 44px;
     }
 
     .section-head {
       display: grid;
-      grid-template-columns: 170px 1fr;
-      gap: 28px;
+      grid-template-columns: 140px 1fr;
+      gap: 32px;
       align-items: start;
       padding-top: 22px;
       border-top: 1px solid var(--line);
@@ -231,7 +237,7 @@
 
     .stack {
       display: grid;
-      gap: 22px;
+      gap: 18px;
     }
 
     .item,
@@ -373,8 +379,8 @@
     }
 
     .project {
-      min-height: 206px;
-      padding: 18px;
+      min-height: 188px;
+      padding: 17px;
       border: 1px solid var(--line);
       border-radius: 8px;
       background: var(--panel-bg);
@@ -403,6 +409,69 @@
 
     .project.featured p {
       max-width: 720px;
+    }
+
+    .project-grid:not(.is-expanded) .project:nth-child(n + 6) {
+      display: none;
+    }
+
+    .project-toggle {
+      margin-top: 14px;
+      padding: 9px 14px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: transparent;
+      color: var(--ink);
+      font: inherit;
+      font-size: 0.84rem;
+      font-weight: 650;
+      cursor: pointer;
+    }
+
+    .project-toggle:hover,
+    .project-toggle:focus-visible {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .compact-details {
+      margin-top: 8px;
+    }
+
+    .compact-details summary {
+      width: fit-content;
+      color: var(--accent);
+      font-size: 0.82rem;
+      font-weight: 650;
+      cursor: pointer;
+    }
+
+    .compact-details[open] summary {
+      margin-bottom: 10px;
+    }
+
+    #recognition .stack {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px 28px;
+    }
+
+    #recognition .item.has-logo {
+      grid-template-columns: 64px 1fr;
+      gap: 14px;
+    }
+
+    #recognition .item.has-logo.pair {
+      grid-template-columns: 126px 1fr;
+    }
+
+    #recognition .logo-box,
+    #recognition .logo-pair .logo-box {
+      width: 64px;
+      height: 64px;
+    }
+
+    #recognition .logo-pair {
+      gap: 4px;
     }
 
     .tags {
@@ -584,6 +653,10 @@
         grid-template-columns: 1fr;
       }
 
+      #recognition .stack {
+        grid-template-columns: 1fr;
+      }
+
       .poster-row {
         grid-template-columns: 1fr;
       }
@@ -700,6 +773,7 @@
 <body>
   <main class="page">
     <header class="topbar" aria-label="Site header">
+      <a class="brand" href="#top" aria-label="Back to top">MFJ</a>
       <nav class="nav" aria-label="Main navigation">
         <a href="#work">Work</a>
         <a href="#projects">Projects</a>
@@ -1134,10 +1208,11 @@
             </div>
           </article>
         </div>
+        <button class="project-toggle" type="button" aria-expanded="false">View all 18 projects</button>
       </div>
     </section>
 
-    <section>
+    <section id="education">
       <div class="section-head">
         <h2>Education</h2>
         <div class="stack">
@@ -1152,7 +1227,7 @@
       </div>
     </section>
 
-    <section>
+    <section id="recognition">
       <div class="section-head">
         <h2>Achievements</h2>
         <div class="stack">
@@ -1303,6 +1378,30 @@
       </div>
     </section>
   </main>
+  <script>
+    const projectGrid = document.querySelector('.project-grid');
+    const projectToggle = document.querySelector('.project-toggle');
+
+    projectToggle?.addEventListener('click', () => {
+      const expanded = projectGrid.classList.toggle('is-expanded');
+      projectToggle.setAttribute('aria-expanded', String(expanded));
+      projectToggle.textContent = expanded ? 'Show selected projects' : 'View all 18 projects';
+    });
+
+    document.querySelectorAll('#work .item, #recognition .item').forEach((item) => {
+      const copy = item.querySelector('.item-copy') || item;
+      const extras = copy.querySelectorAll(':scope > .bullets, :scope > .poster-row');
+      if (!extras.length) return;
+
+      const details = document.createElement('details');
+      details.className = 'compact-details';
+      const summary = document.createElement('summary');
+      summary.textContent = 'View details';
+      details.append(summary);
+      extras[0].before(details);
+      extras.forEach((extra) => details.append(extra));
+    });
+  </script>
   <!-- Cloudflare Web Analytics -->
   <script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "272a2996fd6f4dcd856ee4f9e142c650"}'></script>
   <!-- End Cloudflare Web Analytics -->
