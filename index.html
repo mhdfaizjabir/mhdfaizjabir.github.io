@@ -405,6 +405,58 @@
       max-width: 720px;
     }
 
+    .project-grid:not(.is-expanded) .project:nth-child(n + 6) {
+      display: none;
+    }
+
+    .read-more {
+      margin-top: 9px;
+    }
+
+    .read-more summary,
+    .project-toggle {
+      width: fit-content;
+      color: var(--accent);
+      font-size: 0.84rem;
+      font-weight: 650;
+      cursor: pointer;
+    }
+
+    .read-more summary {
+      list-style: none;
+    }
+
+    .read-more summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .read-more summary::after {
+      content: ' +';
+    }
+
+    .read-more[open] summary::after {
+      content: ' −';
+    }
+
+    .read-more[open] summary {
+      margin-bottom: 10px;
+    }
+
+    .project-toggle {
+      margin-top: 16px;
+      padding: 0;
+      border: 0;
+      border-bottom: 1px solid currentColor;
+      background: transparent;
+      font-family: inherit;
+    }
+
+    .read-more summary:focus-visible,
+    .project-toggle:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 4px;
+    }
+
     .tags {
       display: flex;
       flex-wrap: wrap;
@@ -1134,6 +1186,7 @@
             </div>
           </article>
         </div>
+        <button class="project-toggle" type="button" aria-expanded="false">Explore more projects</button>
       </div>
     </section>
 
@@ -1303,6 +1356,36 @@
       </div>
     </section>
   </main>
+  <script>
+    const projectGrid = document.querySelector('.project-grid');
+    const projectToggle = document.querySelector('.project-toggle');
+
+    projectToggle?.addEventListener('click', () => {
+      const expanded = projectGrid.classList.toggle('is-expanded');
+      projectToggle.setAttribute('aria-expanded', String(expanded));
+      projectToggle.textContent = expanded ? 'Show fewer projects' : 'Explore more projects';
+    });
+
+    document.querySelectorAll('#work .item').forEach((item) => {
+      const copy = item.querySelector('.item-copy');
+      if (!copy) return;
+
+      const fullDetails = copy.querySelectorAll(':scope > .bullets, :scope > .poster-row');
+      if (!fullDetails.length) return;
+
+      const details = document.createElement('details');
+      details.className = 'read-more';
+      const summary = document.createElement('summary');
+      summary.textContent = 'Read more';
+      details.append(summary);
+      fullDetails[0].before(details);
+      fullDetails.forEach((content) => details.append(content));
+
+      details.addEventListener('toggle', () => {
+        summary.textContent = details.open ? 'Read less' : 'Read more';
+      });
+    });
+  </script>
   <!-- Cloudflare Web Analytics -->
   <script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "272a2996fd6f4dcd856ee4f9e142c650"}'></script>
   <!-- End Cloudflare Web Analytics -->
