@@ -11,7 +11,7 @@
     "@type": "Person",
     "name": "Mohammad Faiz Jabir",
     "url": "https://mhdfaizjabir.github.io",
-    "jobTitle": "Applied AI Engineer",
+    "jobTitle": "Applied AI & Full-Stack Engineer",
     "description": "I build AI systems end to end, turning messy data, documents, and model outputs into products that actually ship. If it's AI, I'm building it.",
     "address": {
       "@type": "PostalAddress",
@@ -27,11 +27,11 @@
   </script>
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://mhdfaizjabir.github.io/">
-  <meta property="og:title" content="Mohammad Faiz Jabir | Applied AI Engineer">
+  <meta property="og:title" content="Mohammad Faiz Jabir | Applied AI &amp; Full-Stack Engineer">
   <meta property="og:description" content="I build AI systems end to end, turning messy data, documents, and model outputs into products that actually ship. If it's AI, I'm building it.">
   <meta property="og:image" content="https://mhdfaizjabir.github.io/faiz.jpeg">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Mohammad Faiz Jabir | Applied AI Engineer">
+  <meta name="twitter:title" content="Mohammad Faiz Jabir | Applied AI &amp; Full-Stack Engineer">
   <meta name="twitter:description" content="I build AI systems end to end, turning messy data, documents, and model outputs into products that actually ship. If it's AI, I'm building it.">
   <meta name="twitter:image" content="https://mhdfaizjabir.github.io/faiz.jpeg">
   <title>Mohammad Faiz Jabir</title>
@@ -123,7 +123,7 @@
 
     h1 {
       max-width: 760px;
-      font-size: clamp(3.1rem, 8vw, 5.9rem);
+      font-size: clamp(2.8rem, 5.2vw, 4.35rem);
       line-height: 0.96;
       font-weight: 820;
       letter-spacing: 0;
@@ -414,7 +414,8 @@
     }
 
     .read-more summary,
-    .project-toggle {
+    .project-toggle,
+    .project-read-more {
       width: fit-content;
       color: var(--accent);
       font-size: 0.84rem;
@@ -451,8 +452,29 @@
       font-family: inherit;
     }
 
+    .project-description {
+      display: grid;
+      gap: 6px;
+    }
+
+    .project-description.is-collapsed {
+      max-height: 6.2em;
+      overflow: hidden;
+      -webkit-mask-image: linear-gradient(to bottom, #000 72%, transparent 100%);
+      mask-image: linear-gradient(to bottom, #000 72%, transparent 100%);
+    }
+
+    .project-read-more {
+      padding: 0;
+      border: 0;
+      background: transparent;
+      font-family: inherit;
+      text-align: left;
+    }
+
     .read-more summary:focus-visible,
-    .project-toggle:focus-visible {
+    .project-toggle:focus-visible,
+    .project-read-more:focus-visible {
       outline: 2px solid var(--accent);
       outline-offset: 4px;
     }
@@ -766,7 +788,7 @@
       </div>
       <div>
         <h1>Mohammad Faiz Jabir</h1>
-        <p class="role">Applied AI Engineer</p>
+        <p class="role">Applied AI &amp; Full-Stack Engineer</p>
         <p class="lead">
           I build AI systems end to end, turning messy data, documents, and model outputs into products that actually ship. If it's AI, I'm building it.
         </p>
@@ -1383,6 +1405,31 @@
 
       details.addEventListener('toggle', () => {
         summary.textContent = details.open ? 'Read less' : 'Read more';
+      });
+    });
+
+    document.querySelectorAll('.project').forEach((project) => {
+      const paragraphs = [...project.querySelectorAll(':scope > p')];
+      const textLength = paragraphs.reduce((total, paragraph) => total + paragraph.textContent.length, 0);
+      if (!paragraphs.length || textLength < 240) return;
+
+      const description = document.createElement('div');
+      description.className = 'project-description is-collapsed';
+      paragraphs[0].before(description);
+      paragraphs.forEach((paragraph) => description.append(paragraph));
+
+      const button = document.createElement('button');
+      button.className = 'project-read-more';
+      button.type = 'button';
+      button.textContent = 'Read more';
+      button.setAttribute('aria-expanded', 'false');
+      description.after(button);
+
+      button.addEventListener('click', () => {
+        const expanded = description.classList.toggle('is-expanded');
+        description.classList.toggle('is-collapsed', !expanded);
+        button.setAttribute('aria-expanded', String(expanded));
+        button.textContent = expanded ? 'Read less' : 'Read more';
       });
     });
   </script>
